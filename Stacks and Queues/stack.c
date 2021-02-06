@@ -32,7 +32,16 @@ void createArbitraryNumbers(int amount){
     newarbitraryValue = 0;
   }
 }
-void traversal(stack* currentNODE){
+stack* pop(){
+  stack *tempNode = SHEAD;
+  if(tempNode == NULL){
+    return NULL;
+  }
+  SHEAD = SHEAD->next;
+  return tempNode;
+}
+void traversal(){
+  stack* currentNODE = pop();
   if(currentNODE == NULL){
     return;
   }

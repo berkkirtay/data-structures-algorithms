@@ -15,5 +15,6 @@ stack *SHEAD = NULL;
 
 //prototypes
 stack * createstack(int turn, int max);
+stack* pop();
 void createArbitraryNumbers(int amount);
-void traversal(stack* currentNODE); 
+void traversal(); 
