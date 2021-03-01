@@ -3,7 +3,7 @@
 int main(){
   createArbitraryNumbers(MAX);
   QHEAD = createQueue(QHEAD, 0 , MAX);
- // traversal(QHEAD);
+  traversal(QHEAD);
   printf("/**********************************************/\n");
   initializeQUEUE2();
   int i,err;
