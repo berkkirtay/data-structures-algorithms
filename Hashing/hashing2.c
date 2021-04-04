@@ -67,5 +67,11 @@ int main(){
     printf("%d - %s\n", getStrIndex(newMapArray, getstr(newMapArray, 32)), getstr(newMapArray, 32));
     printf("%d - %s\n", getStrIndex(newMapArray, getstr(newMapArray, 23)), getstr(newMapArray, 23));
     printf("%d - %d\n",getNumberIndex(newMapArray, getNumber(newMapArray, 43)), getNumber(newMapArray, 43));
+    /*10 - hash
+      56 - array
+      32 - test
+      23 - 233214214142
+      43 - 75802231
+    */
     return 0;
 }
