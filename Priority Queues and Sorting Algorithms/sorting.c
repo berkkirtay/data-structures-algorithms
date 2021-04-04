@@ -3,7 +3,6 @@
 #include <time.h>
 
 
-int mergedarray[200];
 //prototypes
 void swap(int defaultarray[100], int i, int j);
 // O(n^2) sorting algorithms
@@ -11,31 +10,13 @@ void selectionsort(int defaultarray[100]);
 void insertionsort(int defaultarray[100]);
 void bubblesort(int defaultarray[100]);
 // O(nlogn) sorting algorithms
-void mergesort(int defaultarray[100], int defaultarray2[100]);
+void startMergeSort(int size);
+void mergesort(int *defaultarray, int size);
+void mergeArrays(int *defaultarray, int *defaultarray2, int *mergedarray, int size1, int size2);
 void quicksort(int defaultarray[100]);
 
 int main(){
-    int defaultarray[100];
-    int defaultarray2[100];
-    srand(time(NULL));
-    int i;
-    for(i = 0; i < 100; i++){
-        defaultarray[i] = random() % 10000;
-        printf("%d\n", defaultarray[i]);
-    }
-    sleep(2);
-    for(i = 0; i < 100; i++){
-        defaultarray2[i] = random() % 1000 + 4;
-        printf("%d\n", defaultarray2[i]);
-    }
-
-    insertionsort(defaultarray);
-    insertionsort(defaultarray2);
-    mergesort(defaultarray, defaultarray2);
-
-    for(i = 0; i < 200; i++){
-    printf("%d\n", mergedarray[i]);}
-
+    startMergeSort(8);
     return 0;
 
 }
@@ -82,16 +63,61 @@ void bubblesort(int defaultarray[100]){
         }
     }
 }
-
-void mergesort(int *defaultarray, int *defaultarray2){ // I will continue from here..
+void startMergeSort(int size){
+    printf("----------------------------------Merge Sort----------------------------------\n");
+     srand(time(NULL));
+    int defaultarray[size];
+    int i;
+    for(i = 0; i < size; i++){
+        defaultarray[i] = random() % 100;
+        printf("%d\n", defaultarray[i]);
+    }
+    mergesort(defaultarray, 8);
+    for(i = 0; i < size; i++){
+    printf("%d. -> %d\n", i, defaultarray[i]);
+    }
+}
+void mergeArrays(int *defaultarray1, int *defaultarray2, int *mergedarray, int size1, int size2){ 
     int i = 0, j = 0;
-    while(i + j < 199){
-        if(defaultarray[i] < defaultarray2[j] && i<100){
-            mergedarray[j + i] = defaultarray[i++];
+    while(i < size1 && j < size2){
+        if(defaultarray1[i] < defaultarray2[j]){
+            mergedarray[i + j] = defaultarray1[i];
+            i++;
         }
-        else if(j < 100){
-            mergedarray[j + i] = defaultarray2[j++];
-        }
+        else{
+            mergedarray[i + j] = defaultarray2[j];
+            j++;
+        } 
+    }
+    while(i < size1){
+        mergedarray[i + j] = defaultarray1[i];
+        i++;
+    }
+    while(j < size2){
+        mergedarray[i + j] = defaultarray2[j];
+        j++;
+    }    
+}
+void mergesort(int *defaultarray, int size){
+    if(size > 1){
+      int i = 0;
+      int tempArr1[size/2];
+      int tempArr2[size/2];
+      while(i < size / 2){
+          tempArr1[i] = defaultarray[i];
+          i++;
+      }
+      int j = 0;
+      while(j < size - i){
+          tempArr2[j] = defaultarray[i + j];
+          j++;
+      }
+      mergesort(tempArr1, i);
+      mergesort(tempArr2, j);
+      mergeArrays(tempArr1, tempArr2, defaultarray, i, j);
+    }
+    else{
+      return;
     }
 }
 
