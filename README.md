@@ -1,1 +1,1 @@
-My data structures implementations with c. I will add more.
+My data structures implementations with c/c++. I will add more.
