@@ -1,1 +1,1 @@
-My data structures implementations with c/c++. I will add more.
+Some data structures implementations and analysis with c/c++. I will add more.
